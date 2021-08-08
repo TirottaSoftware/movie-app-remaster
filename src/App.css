@@ -1,0 +1,115 @@
+:root{
+    --black: #181818;
+    --darkgrey: #333333;
+    --darkgrey-hover: #535353;
+    --red: #EE000C;
+    
+    --font-heading: 'Assistant', sans-serif;
+    --font-subheading: 'Roboto Slab', serif;
+    --font-primary: 'Source Sans Pro', sans-serif;
+}
+*{
+    margin:0;
+    padding:0;
+    font-family: var(--font-primary);
+}
+body{
+    overflow-x: hidden;
+    background: var(--black);
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+ul, ol{
+    list-style: none;
+}
+h1, h2, h3{
+    font-family: var(--font-heading);
+}
+
+/* Navbar */
+
+nav{
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1% 0;
+    background: #1818189f;
+}
+.burger-circle{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: white;
+    display: grid;
+    place-items: center;
+}
+.burger{
+    display: flex;
+    flex-flow: column;
+    cursor: pointer;
+}
+.burger-circle:hover{
+    background: var(--red);
+}
+.burger-circle:hover > .burger div{
+    background: white;
+}
+.burger div{
+    background: var(--black);
+    width: 20px;
+    margin:1.5px 0;
+    height: 2px;
+}
+
+/* Banner */
+
+.banner-container{
+    text-align: center;
+    color: white;
+}
+.hero{
+    height: 70vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.banner-container h1{
+    margin-top: 3%;
+}
+.banner-container p{
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+}
+.banner-btn-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: 5% auto;
+}
+.banner-movie-btn{
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+}
+.btn-banner-trailer{
+    background: none;
+    border: 1px solid white;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: white;
+    padding: 1% 10%;
+}
