@@ -1,28 +1,24 @@
 import './App.css';
-import {useState, useEffect} from 'react';
-import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom' 
 
 import Navbar from './components/Navbar';
-import Banner from './components/Banner';
+import Home from './pages/Home';
+import Movie from './pages/Movie';
 
 function App() {
 
-  const [popular, setPopular] = useState([]);
-  const [bannerMovie, setBannerMovie] = useState({});
-  const api = 'https://api.themoviedb.org/3/movie/popular?api_key=a8ddc54a46d9633a6500259806fbe193';
-
-  useEffect(() => {
-    axios.get(api).then(res => {
-      setPopular(res.data.results);
-      setBannerMovie(res.data.results[1]);
-    })
-  }, [])
-
   return (
-    <div>
-        <Navbar />
-        {bannerMovie&&<Banner movie = {bannerMovie}/>}
-    </div>
+    <Router>
+      <Switch>
+        <div className = 'App'>
+            <Navbar />
+            <Route path = '/' exact component = {Home} />
+            <Route path = '/home' exact component = {Home} />
+            <Route 
+              path='/movie/:id' exact component = {Movie}/>
+        </div>
+      </Switch>
+    </Router>
   );
 }
 
