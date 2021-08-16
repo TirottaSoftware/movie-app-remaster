@@ -36,7 +36,7 @@ function Movie() {
 
     return (
         <div className = 'movie-page'>
-            <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div className = 'movie-info-main'>
                 <h1>{movie.title}</h1>
                 <h3>{movie.genres&&movie.genres[0].name + ', ' + movie.genres[1].name} {movie.release_date}</h3>
