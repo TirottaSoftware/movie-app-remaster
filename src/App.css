@@ -191,3 +191,16 @@ nav{
     color: white;
     margin: 3%;
 }
+.similar-movies{
+    display: flex;
+    width: 95%;
+    height: 50%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.similar-movies .movie{
+    width: 30%;
+}
+.similar-movies .movie:hover{
+    transform: scale(1.1);
+}
