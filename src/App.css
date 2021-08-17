@@ -38,12 +38,11 @@ h1, h2, h3{
 /* Navbar */
 
 nav{
-    position: fixed;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 1% 0;
+    padding: 3% 0;
     background: #1818189f;
 }
 .burger-circle{
@@ -203,4 +202,52 @@ nav{
 }
 .similar-movies .movie:hover{
     transform: scale(1.1);
+}
+.trailer-error{
+    text-align: center;
+    margin: 1% 0;
+    
+}
+
+/* Sidebar */
+
+.sidebar{
+    position: absolute;
+    width: 100%;
+    height: 300%;
+    background: var(--black);
+    color: white;
+    transition: .5s ease-in-out;
+    transform: translateX(-100%);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    z-index: 0;
+}
+.sidebar .profile-pic{
+    width: 300px;
+    height: 300px;
+    background: white;
+    border-radius: 50%;
+    margin: 5% 0;
+}
+.sidebar h2{
+    margin: 3% 0;
+}
+.sidebar .sidebar-links{
+    font-size: 1.5rem;
+    text-align: start;
+    width: 100%;
+    margin-top: 10%;
+}
+.sidebar-links ul li{
+    padding: 5%;
+    cursor: pointer;
+    background: var(--darkgrey)
+}
+.sidebar-links ul li:hover{
+    background: var(--darkgrey-hover);
+}
+.sidebar-active{
+    transform: translateX(0);
 }

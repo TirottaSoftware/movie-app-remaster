@@ -15,9 +15,10 @@ function Movie() {
         const recommendationsApi = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=a8ddc54a46d9633a6500259806fbe193&append_to_response=videos`;
 
         axios.get(api).then(res => {
-            if(res.data.videos.results[0].key){
+            if(res.data.videos.results.length > 0){
                 setTrailerKey(res.data.videos.results[0].key)
             }
+            console.log(res.data);
             setMovie(res.data)
         })
         axios.get(recommendationsApi).then(res => {
@@ -36,10 +37,17 @@ function Movie() {
 
     return (
         <div className = 'movie-page'>
-            <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {
+                trailerKey?
+                <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                :<h3 className = 'trailer-error'>Trailer not available.</h3>
+            }
             <div className = 'movie-info-main'>
                 <h1>{movie.title}</h1>
-                <h3>{movie.genres&&movie.genres[0].name + ', ' + movie.genres[1].name} {movie.release_date}</h3>
+                {movie.genres&&<h3>{
+                movie.genres.length > 1?
+                `${movie.genres[0].name}, ${movie.genres[1].name}  ${movie.release_date}`:
+                `${movie.genres[0].name}  ${movie.release_date}`}</h3>}
             </div>
             
             <button onClick = {getHomePage}>Back to Movies</button>

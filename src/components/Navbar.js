@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Navbar() {
+function Navbar(props) {
     return (
         <nav>
-            <div className = 'burger-circle'>
+            <div onClick = {props.toggleSidebar} className = 'burger-circle'>
                 <div className = 'burger'>
                     <div></div>
                     <div></div>

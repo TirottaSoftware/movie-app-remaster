@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Banner from '../components/Banner';
 import MovieRow from '../components/MovieRow';
+import Sidebar from '../components/Sidebar';
 
 const Home = () => {
     const [popular, setPopular] = useState([]);

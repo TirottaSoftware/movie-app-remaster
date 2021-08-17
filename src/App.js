@@ -1,5 +1,8 @@
 import './App.css';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom' 
+
+import Sidebar from './components/Sidebar';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -7,11 +10,18 @@ import Movie from './pages/Movie';
 
 function App() {
 
+  const [sidebarState, setSidebarState] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarState(!sidebarState)
+  }
+
   return (
     <Router>
       <Switch>
         <div className = 'App'>
-            <Navbar />
+            <Navbar toggleSidebar = {toggleSidebar}/>
+            <Sidebar active = {sidebarState}/>
             <Route path = '/' exact component = {Home} />
             <Route path = '/home' exact component = {Home} />
             <Route 
