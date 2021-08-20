@@ -7,6 +7,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Movie from './pages/Movie';
+import Search from './pages/Search';
 
 function App() {
 
@@ -21,11 +22,11 @@ function App() {
       <Switch>
         <div className = 'App'>
             <Navbar toggleSidebar = {toggleSidebar}/>
-            <Sidebar active = {sidebarState}/>
+            <Sidebar toggleSidebar = {toggleSidebar} active = {sidebarState}/>
             <Route path = '/' exact component = {Home} />
             <Route path = '/home' exact component = {Home} />
-            <Route 
-              path='/movie/:id' exact component = {Movie}/>
+            <Route path='/movie/:id' exact component = {Movie}/>
+            <Route path = '/search/:searchTerm' exact component = {Search} />
         </div>
       </Switch>
     </Router>

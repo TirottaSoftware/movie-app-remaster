@@ -46,8 +46,8 @@ nav{
     background: #1818189f;
 }
 .burger-circle{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     background: white;
     display: grid;
@@ -66,8 +66,8 @@ nav{
 }
 .burger div{
     background: var(--black);
-    width: 20px;
-    margin:1.5px 0;
+    width: 15px;
+    margin:1px 0;
     height: 2px;
 }
 
@@ -76,7 +76,9 @@ nav{
     align-items: center;
     position: relative;
 }
-.search-box input{
+.search-box input[type='text']{
+    font-family: var(--font-primary);
+    color: var(--darkgrey-hover);
     border: none;
     width: 100%;
     transition: .5s ease-in-out;
@@ -86,14 +88,35 @@ nav{
     outline: none;
 }
 .search-icon{
+    border: none;
     position: absolute;
     right: 1%;
     z-index: 1;
-    padding: 15px;
     margin-left: 5%;
+    padding: 4% 5%;
+    color: white;
     border-radius: 50%;
     background: var(--red);
     cursor: pointer;
+}
+.search-container{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    margin: 5% auto;
+    flex-wrap: wrap;
+}
+.search-container .movie{
+    height: 100%;
+    width: 30%;
+}
+.search-container .movie:hover{
+    width: 30%;
+    transform: scale(1.1);
+}
+.search-msg{
+    color: white;
+    margin: auto;
 }
 
 /* Banner */
@@ -275,4 +298,7 @@ nav{
 }
 .sidebar-active{
     transform: translateX(0);
+}
+.sidebar-link{
+    color: white;
 }

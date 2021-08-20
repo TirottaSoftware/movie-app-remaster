@@ -1,6 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Sidebar(props) {
+
+    const toggleSidebar = () => {
+        props.toggleSidebar();
+    }
+
     return (
         <div className = {props.active?'sidebar sidebar-active':'sidebar'}>
             <div className = 'profile-pic'></div>
@@ -8,10 +14,10 @@ function Sidebar(props) {
 
             <div className = 'sidebar-links'>
                 <ul>
-                    <li>Home</li>
-                    <li>My List</li>
-                    <li>Profile</li>
-                    <li>Logout</li>
+                    <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Home</li></Link>
+                    <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>My List</li></Link>
+                    <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Profile</li></Link>
+                    <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Logout</li></Link>
                 </ul>
             </div>
         </div>
