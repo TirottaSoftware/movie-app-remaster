@@ -16,7 +16,7 @@ function MovieRow(props) {
                 <div className = 'movie-row'>
                     {
                         props.movies.map(movie => {
-                            return <Movie onClick = {() => getMovie(movie.id)} movie = {movie}/>
+                            return <Movie key = {movie.id} onClick = {() => getMovie(movie.id)} movie = {movie}/>
                         })
                     }
                 </div>
