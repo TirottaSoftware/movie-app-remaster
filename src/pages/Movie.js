@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useHistory } from 'react-router'
+import { AuthContext } from '../AuthContext';
 import axios from 'axios';
 import MovieComponent from '../components/Movie';
 
@@ -10,6 +11,8 @@ function Movie() {
     const [recommendations, setRecommendations] = useState('')
     const history = useHistory();
 
+    const {authState} = useContext(AuthContext);
+
     useEffect(() => {
         const api = `https://api.themoviedb.org/3/movie/${id}?api_key=a8ddc54a46d9633a6500259806fbe193&append_to_response=videos`;
         const recommendationsApi = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=a8ddc54a46d9633a6500259806fbe193&append_to_response=videos`;
@@ -18,7 +21,6 @@ function Movie() {
             if(res.data.videos.results.length > 0){
                 setTrailerKey(res.data.videos.results[0].key)
             }
-            console.log(res.data);
             setMovie(res.data)
         })
         axios.get(recommendationsApi).then(res => {
@@ -33,6 +35,18 @@ function Movie() {
 
     const getHomePage = () => {
         history.push('/')
+    }
+
+    const addToList = () => {
+        axios.post('http://localhost:3001/auth/movies', {
+              id: movie.id,
+              title: movie.title,
+              poster: movie.poster_path,
+              userId: authState.user.uid
+          })
+        .then(res => {
+            console.log(res.data)
+        })
     }
 
     return (
@@ -51,7 +65,7 @@ function Movie() {
             </div>
             
             <button onClick = {getHomePage}>Back to Movies</button>
-            <button className = 'btn-grey'>+ My List</button>
+            <button onClick = {addToList} className = 'btn-grey'>+ My List</button>
             <p>{movie.overview}</p>
 
             <h2>People also like</h2>
