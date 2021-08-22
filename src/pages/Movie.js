@@ -9,6 +9,7 @@ function Movie() {
     const [movie, setMovie] = useState({});
     const [trailerKey, setTrailerKey] = useState('');
     const [recommendations, setRecommendations] = useState('')
+    const [inList, setInList] = useState(false);
     const history = useHistory();
 
     const {authState} = useContext(AuthContext);
@@ -21,11 +22,24 @@ function Movie() {
             if(res.data.videos.results.length > 0){
                 setTrailerKey(res.data.videos.results[0].key)
             }
-            setMovie(res.data)
+            setMovie(res.data);
+            axios.get('http://localhost:3001/auth/movies', {
+                headers: {
+                    accessToken: localStorage.getItem('accessToken')
+                }
+            })
+            .then(list => {
+                list.data.map(movie => {
+                    if(movie.movieId == res.data.id){
+                        setInList(true)
+                    }
+                })
+            })
         })
         axios.get(recommendationsApi).then(res => {
             setRecommendations(res.data.results.slice(0, 9));
         })
+       
     }, [])
 
     const getMovie = (id) => {
@@ -37,15 +51,21 @@ function Movie() {
         history.push('/')
     }
 
+    const removeFromList = () => {
+        axios.delete('http://localhost:3001/auth/movies/' + movie.id).then(res => {
+            setInList(false);
+        })
+    }
+
     const addToList = () => {
         axios.post('http://localhost:3001/auth/movies', {
               id: movie.id,
               title: movie.title,
-              poster: movie.poster_path,
+              poster_path: movie.poster_path,
               userId: authState.user.uid
           })
-        .then(res => {
-            console.log(res.data)
+        .then(() => {
+            setInList(true)
         })
     }
 
@@ -65,7 +85,7 @@ function Movie() {
             </div>
             
             <button onClick = {getHomePage}>Back to Movies</button>
-            <button onClick = {addToList} className = 'btn-grey'>+ My List</button>
+            <button onClick = {inList?removeFromList:addToList} className = 'btn-grey'>{inList?'Remove from MyList':'+ My List'}</button>
             <p>{movie.overview}</p>
 
             <h2>People also like</h2>

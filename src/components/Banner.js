@@ -1,15 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../AuthContext';
 import axios from 'axios';
 import {useHistory} from 'react-router';
 
 function Banner(props) {
     const [bannerTrailer, setBannerTrailer] = useState('')
+    const {authState} = useContext(AuthContext);
 
     const history = useHistory();
     const getMovie = (id) => {
       history.push('/movie/' + id);
       window.location.reload();
     }
+
+    const addToList = () => {
+      axios.post('http://localhost:3001/auth/movies', {
+            id: props.movie.id,
+            title: props.movie.title,
+            poster_path: props.movie.poster_path,
+            userId: authState.user.uid
+        })
+      .then(res => {
+          console.log(res.data)
+      })
+  }
 
     useEffect(() => {
       props.movie&&axios.get(`https://api.themoviedb.org/3/movie/${props.movie.id}?api_key=a8ddc54a46d9633a6500259806fbe193&append_to_response=videos`).then(res => {
@@ -25,7 +39,7 @@ function Banner(props) {
             <div className = 'banner-btn-area'>
                 <button onClick = {() => getMovie(props.movie.id)} className = 'banner-movie-btn'>i</button>
                 <a className = 'btn-banner-trailer' href = {bannerTrailer}>Trailer</a>
-                <button className = 'banner-movie-btn'>+</button>
+                <button className = 'banner-movie-btn' onClick = {addToList}>+</button>
             </div>
           </div>
     )

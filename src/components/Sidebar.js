@@ -15,7 +15,7 @@ function Sidebar(props) {
             <div className = 'sidebar-links'>
                 <ul>
                     <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Home</li></Link>
-                    <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>My List</li></Link>
+                    <Link onClick = {toggleSidebar} to = '/list'><li className = 'sidebar-link'>My List</li></Link>
                     <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Profile</li></Link>
                     <Link onClick = {toggleSidebar} to = '/'><li className = 'sidebar-link'>Logout</li></Link>
                 </ul>

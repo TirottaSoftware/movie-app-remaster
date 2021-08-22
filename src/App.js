@@ -12,6 +12,7 @@ import {AuthContext} from './AuthContext';
 import Home from './pages/Home';
 import Movie from './pages/Movie';
 import Search from './pages/Search';
+import MyList from './pages/MyList';
 
 function App() {
 
@@ -46,12 +47,14 @@ function App() {
   const register = (username, password, email) => {
     axios.post('http://localhost:3001/auth', {username, email, password}).then(res => {
       localStorage.setItem('accessToken', res.data.accessToken)
+      setAuthState({...authState, loggedIn: true})
     })
   }
 
   const login = (username, password) => {
     axios.post('http://localhost:3001/auth/login', {username, password}).then(res => {
       localStorage.setItem('accessToken', res.data)
+      setAuthState({...authState, loggedIn: true})
     })
   }
 
@@ -60,16 +63,23 @@ function App() {
       <Router>
         <Switch>
           <div className = 'App'>
+          {
+            authState.loggedIn?
+            <>
               <Navbar toggleSidebar = {toggleSidebar}/>
               <Sidebar toggleSidebar = {toggleSidebar} active = {sidebarState}/>
-              <Route
-                path='/'
-                component={() => <Auth login={login} register = {register} />}
-              />
-              <Route path = '/home' exact component = {Home} />
-              <Route path='/movie/:id' exact component = {Movie}/>
+              
+              <Route path = '/' exact component = {Home} />
+              <Route path = '/list' exact component = {MyList} />
+              <Route path = '/movie/:id' exact component = {Movie}/>
               <Route path = '/search/:searchTerm' exact component = {Search} />
-          </div>
+            </>
+            :
+            <>
+              <Route path='/' component={() => <Auth login={login} register = {register} />} />
+            </>
+          }
+            </div>
         </Switch>
       </Router>
     </AuthContext.Provider>
