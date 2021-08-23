@@ -43,6 +43,7 @@ function App() {
 
   const toggleSidebar = () => {
     setSidebarState(!sidebarState)
+    window.scrollTo(0, 0)
   }
 
   const register = (username, password, email) => {
@@ -61,6 +62,7 @@ function App() {
       else{
         localStorage.setItem('accessToken', res.data)
         setAuthState({...authState, loggedIn: true})
+        window.location.reload();
       }
     })
   }

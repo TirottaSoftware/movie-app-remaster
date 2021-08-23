@@ -1,12 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router';
 import axios from 'axios';
-import {AuthContext} from '../AuthContext';
 import Movie from '../components/Movie';
 
-function MyList(props) {
+function MyList() {
     const [movies, setMovies] = useState([]);
-    const { authState } = useContext(AuthContext);
     const history = useHistory();
 
     const getMovie = (id) => {
@@ -28,7 +26,7 @@ function MyList(props) {
             <h1>My List</h1>
             <div className = 'movies-container'>
                 {
-                    movies.map(movie => {
+                    movies&&movies.map(movie => {
                         return <Movie onClick = {() => getMovie(movie.movieId)} movie = {movie} />
                     })
                 }

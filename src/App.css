@@ -47,6 +47,8 @@ nav{
     justify-content: space-around;
     padding: 3% 0;
     background: #1818189f;
+    position: sticky;
+    top: 0;
 }
 .burger-circle{
     height: 35px;
@@ -428,4 +430,9 @@ nav{
     border-radius: 5px;
     margin: 3% 0;
     padding: 1% 0;
+}
+.profile-page-section .pd-err-msg, .profile-page-section .cp-err-msg{
+    text-align: center;
+    margin-bottom: 3%;
+    color: var(--red);
 }

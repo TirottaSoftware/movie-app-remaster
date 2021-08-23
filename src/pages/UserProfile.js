@@ -6,7 +6,7 @@ function UserProfile(props) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/' + props.uid, {
+        axios.get('http://localhost:3001/auth/profile/' + props.uid, {
             headers: {
                 accessToken: localStorage.getItem('accessToken')
             }
@@ -22,6 +22,8 @@ function UserProfile(props) {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [profilePicture, setProfilePicture] = useState('');
+
+    const [profileDataErrorMessage, setProfileDataErrorMessage] = useState('');
 
     const handleUsernameChange = (e) => {
         e.preventDefault();
@@ -39,11 +41,36 @@ function UserProfile(props) {
         setProfilePicture(e.target.value)
     }
 
+    const handleDataChange = (e) => {
+        e.preventDefault();
+
+        if(!username || !email || !profilePicture){
+            setProfileDataErrorMessage('Fields cannot be empty');
+            return;
+        }
+        axios.put('http://localhost:3001/profile', {
+            id: props.uid,
+            username: username,
+            email: email,
+            profilePic: profilePicture
+        })
+        .then(res => {
+            if(res.data.error){
+                setProfileDataErrorMessage(res.data.error)
+                return;
+            }
+            localStorage.setItem('accessToken', res.data.accessToken);
+            window.location.reload();
+        })
+    }
+
     //Change Password
 
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
+
+    const [pwdErrorMessage, setPwdErrorMessage] = useState('');
 
     const handleCurrentPasswordChange = (e) => {
         e.preventDefault();
@@ -61,12 +88,44 @@ function UserProfile(props) {
         setConfirmNewPassword(e.target.value)
     }
 
+    const changePassword = (e) => {
+        e.preventDefault();
+        
+        if(!currentPassword || !newPassword || !confirmNewPassword){
+            setPwdErrorMessage('Fields cannot be empty');
+            return;
+        }
+
+        if(newPassword === confirmNewPassword){
+            if(newPassword.length >= 6){
+                axios.put('http://localhost:3001/profile/pwd', {id: props.uid, pwd: currentPassword, newPwd: newPassword}).then(res => {
+                    if(res.data.error){
+                        setPwdErrorMessage(res.data.error);
+                        return;
+                    }
+                    else{
+                        window.location.reload();
+                    }
+                })
+            }
+            else{
+                setPwdErrorMessage('Password must be at least 6 characters long')
+                return;
+            }
+        }
+        else{
+            setPwdErrorMessage('Passwords do not match.')
+            return;
+        }
+    }
+
     return (
         <div className = 'profile-page'>
             <div className = 'avatar' style = {{backgroundImage: `url(${user.profilePictureURL})`}}></div>
             <div className = 'profile-page-section'>
                 <h2>Profile Data</h2>
-                <form>
+                <p className = 'pd-err-msg'>{profileDataErrorMessage}</p>
+                <form onSubmit = {handleDataChange} >
                     <input type = 'text' placeholder = 'Username' onChange = {handleUsernameChange} value = {username}/>
                     <input type = 'text' placeholder = 'Email' value = {email} onChange = {handleEmailChange} />
                     <input type = 'text' placeholder = 'Profile Picture URL' value = {profilePicture} onChange = {handleProfilePictureChange} />
@@ -75,7 +134,8 @@ function UserProfile(props) {
             </div>
             <div className = 'profile-page-section'>
                 <h2>Change Password</h2>
-                <form>
+                <p className = 'cp-err-msg'>{pwdErrorMessage}</p>
+                <form onSubmit = {changePassword}>
                     <input onChange = {handleCurrentPasswordChange} type = 'password' value = {currentPassword} placeholder = 'Current Password' />
                     <input onChange = {handleNewPasswordChange} type = 'password' value = {newPassword} placeholder = 'New Password' />
                     <input onChange = {handleConfirmPasswordChange} type = 'password' value = {confirmNewPassword} placeholder = 'Confirm New Password' />
