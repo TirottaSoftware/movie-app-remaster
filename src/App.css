@@ -367,3 +367,65 @@ nav{
     font-size: 1.25rem;
     cursor: pointer;
 }
+
+/* Profile Page */
+
+.profile-page{
+    text-align: center;
+    width: 80%;
+    padding: 0 10%;
+}
+.profile-page .avatar{
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    background-size: cover;
+    margin: 5% auto;
+}
+.profile-page-section{
+    border-top: 1px solid #666666;
+    margin: 3% 0;
+    padding: 3% 0;
+}
+.profile-page-section h2{
+    color: white;
+    margin: 5%;
+}
+.profile-page-section form{
+    display: flex;
+    flex-flow: column;
+}
+.profile-page-section form input{
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 1.25%;
+    background: #666666;
+    color: white;
+}
+.profile-page-section form input::placeholder{
+    color: white;
+}
+.profile-page-section form button{
+    width: 100%;
+    background: white;
+    border: none;
+    font-size: 1.15rem;
+    border-radius: 5px;
+    margin: 3% 0;
+    padding: 1% 0;
+}
+.profile-page-section p{
+    color: white;
+}
+.btn-delete-account{
+    width: 100%;
+    background: var(--red);
+    color: white;
+    border: none;
+    font-size: 1.15rem;
+    border-radius: 5px;
+    margin: 3% 0;
+    padding: 1% 0;
+}

@@ -13,6 +13,7 @@ import Home from './pages/Home';
 import Movie from './pages/Movie';
 import Search from './pages/Search';
 import MyList from './pages/MyList';
+import UserProfile from './pages/UserProfile'
 
 function App() {
 
@@ -83,6 +84,7 @@ function App() {
               <Route path = '/' exact component = {Home} />
               <Route path = '/list' exact component = {MyList} />
               <Route path = '/movie/:id' exact component = {Movie}/>
+              <Route path = '/profile' exact component = {() => <UserProfile uid = {authState.user.uid}/>}/>
               <Route path = '/search/:searchTerm' exact component = {Search} />
             </>
             :
