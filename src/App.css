@@ -31,6 +31,9 @@ ul, ol{
 h1, h2, h3{
     font-family: var(--font-heading);
 }
+input{
+    outline: none;
+}
 .App{
     width: 100%;
 }
@@ -278,6 +281,7 @@ nav{
     background: white;
     border-radius: 50%;
     margin: 5% 0;
+    background-size: cover;
 }
 .sidebar h2{
     margin: 3% 0;
@@ -307,7 +311,7 @@ nav{
 
 .my-list-container{
     width: 90%;
-    height: 45vh;
+    height: 25vh;
     margin: 5% auto;
 }
 .my-list-container h1{
@@ -326,4 +330,40 @@ nav{
 }
 .movies-container .movie:hover{
     transform: scale(1.1);
+}
+
+/* Auth Page */
+
+.auth-page{
+    width: 90%;
+    padding: 15% 5%;
+}
+.auth-page h1{
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 10%;
+}
+.login-form, .register-form{
+    display: flex;
+    flex-flow: column;
+}
+.login-form .login-input, .register-form input{
+    font-size: 1.3rem;
+    margin: 3% 0;
+    background: none;
+    border: none;
+    color: white;
+    border-bottom: 2px solid var(--darkgrey-hover);
+}
+.login-input::placeholder, .register-form input::placeholder{
+    color: white;
+}
+.login-form input[type='submit'], .register-form input[type='submit']{
+    background: var(--red);
+    border: none;
+    padding: 1% 0;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
 }

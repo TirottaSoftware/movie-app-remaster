@@ -48,14 +48,25 @@ function App() {
     axios.post('http://localhost:3001/auth', {username, email, password}).then(res => {
       localStorage.setItem('accessToken', res.data.accessToken)
       setAuthState({...authState, loggedIn: true})
+      window.location.reload();
     })
   }
 
   const login = (username, password) => {
     axios.post('http://localhost:3001/auth/login', {username, password}).then(res => {
-      localStorage.setItem('accessToken', res.data)
-      setAuthState({...authState, loggedIn: true})
+      if(res.data.error){
+        alert('Invalid credentials');
+      }
+      else{
+        localStorage.setItem('accessToken', res.data)
+        setAuthState({...authState, loggedIn: true})
+      }
     })
+  }
+
+  const logout = () => {
+    localStorage.removeItem('accessToken');
+    setAuthState({user: {}, loggedIn: false});
   }
 
   return (
@@ -67,7 +78,7 @@ function App() {
             authState.loggedIn?
             <>
               <Navbar toggleSidebar = {toggleSidebar}/>
-              <Sidebar toggleSidebar = {toggleSidebar} active = {sidebarState}/>
+              <Sidebar logout = {logout} toggleSidebar = {toggleSidebar} active = {sidebarState}/>
               
               <Route path = '/' exact component = {Home} />
               <Route path = '/list' exact component = {MyList} />

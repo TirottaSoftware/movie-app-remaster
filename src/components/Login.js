@@ -29,9 +29,9 @@ const Login = (props) => {
     return (
         <form onSubmit = {handleFormSubmit} className = 'login-form'>
             <p className = 'error-msg'>{loginErrorMessage}</p>
-            <input onChange = {handleUsernameChange} placeholder = 'username' value = {username} type = 'text' />
-            <input onChange = {handlePasswordChange} placeholder = 'password' value = {password} type = 'password' />
-            <input type = 'submit' value = 'Log In' />
+            <input className = "login-input" onChange = {handleUsernameChange} placeholder = 'Username' value = {username} type = 'text' />
+            <input className = "login-input" onChange = {handlePasswordChange} placeholder = 'Password' value = {password} type = 'password' />
+            <input type = 'submit' value = 'Sign In' />
         </form>
     )
 }

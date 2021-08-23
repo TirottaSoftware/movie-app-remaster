@@ -54,10 +54,10 @@ const Register = (props) => {
     return ( 
         <form onSubmit = {handleSubmit} className = 'register-form'>
             <p className = 'error-msg'>{errorMessage}</p>
-            <input onChange = {handleUsernameChange} type = 'text' placeholder = 'username' />
-            <input onChange = {handleEmailChange} type = 'email' placeholder = 'email' />
-            <input onChange = {handlePasswordChange} type = 'password' placeholder = 'password' />
-            <input onChange = {handleConfirmPasswordChange} type = 'password' placeholder = 'confirm password' />
+            <input onChange = {handleUsernameChange} type = 'text' placeholder = 'Username' />
+            <input onChange = {handleEmailChange} type = 'email' placeholder = 'Email' />
+            <input onChange = {handlePasswordChange} type = 'password' placeholder = 'Password' />
+            <input onChange = {handleConfirmPasswordChange} type = 'password' placeholder = 'Confirm Password' />
             <input type = 'submit' value = 'Register'/>
         </form>
     )
