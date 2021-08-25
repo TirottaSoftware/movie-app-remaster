@@ -6,7 +6,7 @@ function UserProfile(props) {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/profile/' + props.uid, {
+        axios.get('https://tirottas-movie-app.herokuapp.com/auth/profile/' + props.uid, {
             headers: {
                 accessToken: localStorage.getItem('accessToken')
             }
@@ -48,7 +48,7 @@ function UserProfile(props) {
             setProfileDataErrorMessage('Fields cannot be empty');
             return;
         }
-        axios.put('http://localhost:3001/profile', {
+        axios.put('https://tirottas-movie-app.herokuapp.com/profile', {
             id: props.uid,
             username: username,
             email: email,
@@ -67,7 +67,7 @@ function UserProfile(props) {
     const deleteUser = () => {
         console.log(props.uid)
         if (window.confirm("Are you sure you want to delete your account. This action is irrevirsible")) {
-          axios.put('http://localhost:3001/profile/delete', {id: props.uid})
+          axios.put('https://tirottas-movie-app.herokuapp.com/profile/delete', {id: props.uid})
           .then(() => {
               localStorage.removeItem('accessToken');
               window.location.reload();
@@ -109,7 +109,7 @@ function UserProfile(props) {
 
         if(newPassword === confirmNewPassword){
             if(newPassword.length >= 6){
-                axios.put('http://localhost:3001/profile/pwd', {id: props.uid, pwd: currentPassword, newPwd: newPassword}).then(res => {
+                axios.put('https://tirottas-movie-app.herokuapp.com/profile/pwd', {id: props.uid, pwd: currentPassword, newPwd: newPassword}).then(res => {
                     if(res.data.error){
                         setPwdErrorMessage(res.data.error);
                         return;

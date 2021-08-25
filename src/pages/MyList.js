@@ -12,7 +12,7 @@ function MyList() {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/movies', {
+        axios.get('https://tirottas-movie-app.herokuapp.com/auth/movies', {
              headers: {accessToken: localStorage.getItem('accessToken')}
             })
             .then(res => {

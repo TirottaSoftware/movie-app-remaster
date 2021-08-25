@@ -23,7 +23,7 @@ function Movie() {
                 setTrailerKey(res.data.videos.results[0].key)
             }
             setMovie(res.data);
-            axios.get('http://localhost:3001/auth/movies', {
+            axios.get('https://tirottas-movie-app.herokuapp.com/auth/movies', {
                 headers: {
                     accessToken: localStorage.getItem('accessToken')
                 }
@@ -52,13 +52,13 @@ function Movie() {
     }
 
     const removeFromList = () => {
-        axios.delete('http://localhost:3001/auth/movies/' + movie.id).then(res => {
+        axios.delete('https://tirottas-movie-app.herokuapp.com/auth/movies/' + movie.id).then(res => {
             setInList(false);
         })
     }
 
     const addToList = () => {
-        axios.post('http://localhost:3001/auth/movies', {
+        axios.post('https://tirottas-movie-app.herokuapp.com/auth/movies', {
               id: movie.id,
               title: movie.title,
               poster_path: movie.poster_path,

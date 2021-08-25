@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     if(localStorage.getItem('accessToken')){
-      axios.get('http://localhost:3001/auth', {
+      axios.get('https://tirottas-movie-app.herokuapp.com/auth', {
         headers: {
           accessToken: localStorage.getItem('accessToken')
         }
@@ -48,7 +48,7 @@ function App() {
   }
 
   const register = (username, password, email) => {
-    axios.post('http://localhost:3001/auth', {username, email, password}).then(res => {
+    axios.post('https://tirottas-movie-app.herokuapp.com/auth', {username, email, password}).then(res => {
       localStorage.setItem('accessToken', res.data.accessToken)
       setAuthState({...authState, loggedIn: true})
       window.location.reload();
@@ -56,7 +56,7 @@ function App() {
   }
 
   const login = (username, password) => {
-    axios.post('http://localhost:3001/auth/login', {username, password}).then(res => {
+    axios.post('https://tirottas-movie-app.herokuapp.com/auth/login', {username, password}).then(res => {
       if(res.data.error){
         alert('Invalid credentials');
       }

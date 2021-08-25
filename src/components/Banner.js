@@ -15,7 +15,7 @@ function Banner(props) {
     }
 
     const addToList = () => {
-      axios.post('http://localhost:3001/auth/movies', {
+      axios.post('https://tirottas-movie-app.herokuapp.com/auth/movies', {
             id: props.movie.id,
             title: props.movie.title,
             poster_path: props.movie.poster_path,
@@ -31,7 +31,7 @@ function Banner(props) {
         setBannerTrailer(`https://www.youtube.com/watch?v=${res.data.videos.results[0].key}`);
       })
 
-      axios.get('http://localhost:3001/auth/movies', {
+      axios.get('https://tirottas-movie-app.herokuapp.com/auth/movies', {
         headers: {
             accessToken: localStorage.getItem('accessToken')
         }
