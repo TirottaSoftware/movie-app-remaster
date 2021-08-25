@@ -43,7 +43,7 @@ function App() {
 
   const toggleSidebar = () => {
     setSidebarState(!sidebarState)
-    document.querySelector('body').classList.toggle('of-hidden')
+    //document.querySelector('body').classList.toggle('of-hidden')
     window.scrollTo(0, 0)
   }
 
