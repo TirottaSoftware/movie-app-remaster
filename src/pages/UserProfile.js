@@ -64,6 +64,17 @@ function UserProfile(props) {
         })
     }
 
+    const deleteUser = () => {
+        console.log(props.uid)
+        if (window.confirm("Are you sure you want to delete your account. This action is irrevirsible")) {
+          axios.put('http://localhost:3001/profile/delete', {id: props.uid})
+          .then(() => {
+              localStorage.removeItem('accessToken');
+              window.location.reload();
+          })
+        } 
+    }
+
     //Change Password
 
     const [currentPassword, setCurrentPassword] = useState('');
@@ -145,7 +156,7 @@ function UserProfile(props) {
             <div className = 'profile-page-section'>
                 <h2>Danger zone</h2>
                 <p>Please note that the account deletion process might take up to 28 days before it fully removes your account from our systems. We advise you to re-consider the deletion before taking action.</p>
-                <button className = 'btn-delete-account'>Delete Account</button>
+                <button onClick = {deleteUser} className = 'btn-delete-account'>Delete Account</button>
             </div>
             <div className = 'profile-page-section'>
                 <p>Account created at: {user.createdAt}</p>

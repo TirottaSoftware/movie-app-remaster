@@ -37,6 +37,9 @@ input{
 .App{
     width: 100%;
 }
+.of-hidden{
+    overflow: hidden;
+}
 
 /* Navbar */
 
@@ -46,9 +49,13 @@ nav{
     align-items: center;
     justify-content: space-around;
     padding: 3% 0;
-    background: #1818189f;
+    background: #181818;
     position: sticky;
     top: 0;
+    z-index: 1;
+}
+nav ul{
+    display: none;
 }
 .burger-circle{
     height: 35px;
@@ -201,6 +208,7 @@ nav{
 }
 .movie:hover{
     width: 35%;
+    opacity: 0.5;
 }
 
 .movie-page h1{
@@ -340,11 +348,18 @@ nav{
     width: 90%;
     padding: 15% 5%;
 }
-.auth-page h1{
+.page-title{
     text-align: center;
     color: white;
     font-size: 2.5rem;
     margin-bottom: 10%;
+}
+.auth-page h2{
+    text-align: center;
+    color: white;
+    margin-top: 5%;
+    text-decoration: underline;
+    font-size: 1.75rem;
 }
 .login-form, .register-form{
     display: flex;
@@ -410,12 +425,12 @@ nav{
     color: white;
 }
 .profile-page-section form button{
-    width: 100%;
+    width: 97.5%;
     background: white;
     border: none;
     font-size: 1.15rem;
     border-radius: 5px;
-    margin: 3% 0;
+    margin: 3% auto;
     padding: 1% 0;
 }
 .profile-page-section p{
@@ -435,4 +450,179 @@ nav{
     text-align: center;
     margin-bottom: 3%;
     color: var(--red);
+}
+
+
+@media screen and (min-width: 550px){  
+    .movie-row{
+        height: 30vh;
+    }
+    .movie{
+        width: 4%;
+    }
+    .movie:hover{
+        width: 4.5%;
+    }
+}
+@media screen and (min-width: 750px){
+    .movie{
+        width: 3.5%;
+    }
+}
+@media screen and (min-width: 960px){
+    .auth-page{
+        display: flex;
+        justify-content: space-around;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .login-form, .register-form{
+        width: 40%;
+        background: #5353537c;
+        padding: 3%;
+        justify-content: center;
+        border-radius: 25px;
+    }
+    .page-title{
+        margin: 5% 0;
+        font-size: 3rem;
+    }
+    .row-section{
+        margin: 1% 0;
+    }
+    .movie-row{
+        height: 35vh;
+    }
+    .movie{
+        width: 3.5%;
+    }
+    .movie:hover{
+        width: 4%;
+    }
+
+    .movies-container .movie{
+        width: 15%;
+    }
+    .movies-container{
+        justify-content: center;
+    }
+    .movies-container .movie:hover{
+        width: 15%;
+        transform: scale(1.05);
+    }
+}
+@media screen and (min-width: 1150px){
+    .auth-page{
+        width: 80%;
+    }
+    .movie-row{
+        margin-left: 1.5%;
+        height: 30vh;
+    }
+    .movie{
+        width: 2.5%;
+    }
+    .movie:hover{
+        width: 3%;
+    } 
+
+    nav{
+        padding: 1% 0;
+    }
+
+    .hero{
+        height: 90vh;
+    }
+    .banner-info{
+        position: absolute;
+        top:45%;
+        margin-left: 5%;
+        text-align: start;
+    }
+    .banner-info h1{
+        font-size: 2.75rem;
+    }
+    .banner-info p{
+        font-size: 1.3rem;
+        margin: 1% 0;
+        width: 40%;
+    }
+    .banner-info .banner-btn-area{
+        width: 20%;
+        margin: 0;
+    }
+    .row-category{
+        font-size: 2rem;
+        margin-top: 5%;
+        margin-bottom: 0;
+    }
+    
+    .profile-page{
+        width: 40%;
+        padding:0 30%;
+    }
+
+    .trailer{
+        height: 90%;
+    }
+    .movie-page p{
+        width: 30%;
+        margin: 0 3%;
+    }
+    .movie-page-buttons{
+        width: 20%;
+        float: right;
+        margin-right: 50%;
+    }
+    .similar-movies{
+        height: 75%;
+    }
+    .similar-movies .movie{
+        width: 19%;
+    }
+    .similar-movies .movie:hover{
+        width: 19%;
+        transform: scale(1.05);
+    }
+
+    .search-container{
+        width: 80%;
+        height: 22.5vh;
+    }
+    .search-container .movie{
+        width: 10%;
+    }
+    .search-container .movie:hover{
+        width: 10%;
+    }
+
+    .burger, .burger-circle{
+        display: none;
+    }
+    nav ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 20%;
+    }
+    nav ul li{
+        font-size: 1.25rem;
+        margin: 0 15px;
+        white-space: nowrap;
+    }
+    nav ul li:hover{
+        color: var(--red);
+    }
+}
+@media screen and (min-width: 1620px){
+    .movie-row{
+        height: 40vh;
+    }
+    .movie{
+        width: 2.25%;
+    }
+    .movie:hover{
+        width: 2.5%;
+    }
 }

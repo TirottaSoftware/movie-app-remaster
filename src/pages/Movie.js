@@ -73,7 +73,7 @@ function Movie() {
         <div className = 'movie-page'>
             {
                 trailerKey?
-                <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=1`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe className = 'trailer' src={`https://www.youtube.com/embed/${trailerKey}?autoplay=0&mute=0`} frameborder="0" allow="accelerometer; autoPlay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 :<h3 className = 'trailer-error'>Trailer not available.</h3>
             }
             <div className = 'movie-info-main'>
@@ -84,8 +84,10 @@ function Movie() {
                 `${movie.genres[0].name}  ${movie.release_date}`}</h3>}
             </div>
             
-            <button onClick = {getHomePage}>Back to Movies</button>
-            <button onClick = {inList?removeFromList:addToList} className = 'btn-grey'>{inList?'Remove from MyList':'+ My List'}</button>
+            <div className = 'movie-page-buttons'>
+                <button onClick = {getHomePage}>Back to Movies</button>
+                <button onClick = {inList?removeFromList:addToList} className = 'btn-grey'>{inList?'Remove from MyList':'+ My List'}</button>
+            </div>
             <p>{movie.overview}</p>
 
             <h2>People also like</h2>

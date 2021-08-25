@@ -43,6 +43,7 @@ function App() {
 
   const toggleSidebar = () => {
     setSidebarState(!sidebarState)
+    document.querySelector('body').classList.toggle('of-hidden')
     window.scrollTo(0, 0)
   }
 
@@ -80,7 +81,7 @@ function App() {
           {
             authState.loggedIn?
             <>
-              <Navbar toggleSidebar = {toggleSidebar}/>
+              <Navbar logout = {logout} toggleSidebar = {toggleSidebar}/>
               <Sidebar logout = {logout} toggleSidebar = {toggleSidebar} active = {sidebarState}/>
               
               <Route path = '/' exact component = {Home} />

@@ -53,6 +53,7 @@ const Register = (props) => {
 
     return ( 
         <form onSubmit = {handleSubmit} className = 'register-form'>
+        <h2>Register</h2>
             <p className = 'error-msg'>{errorMessage}</p>
             <input onChange = {handleUsernameChange} type = 'text' placeholder = 'Username' />
             <input onChange = {handleEmailChange} type = 'email' placeholder = 'Email' />
