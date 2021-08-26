@@ -261,10 +261,11 @@ nav ul{
     flex-wrap: wrap;
 }
 .similar-movies .movie{
-    width: (30% - 1px);
+    width: calc(30% - 1px);
 }
 .similar-movies .movie:hover{
-    transform: scale(1.1);
+    width: calc(30% - 1px);
+    transform: scale(1.05);
 }
 .trailer-error{
     text-align: center;
