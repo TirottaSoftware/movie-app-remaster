@@ -1,11 +1,14 @@
 import React from 'react'
 import Login from '../components/Login'
 import Register from '../components/Register'
+import Logo from '../LOGO_TMA.png'
 
 function Auth(props) {
     return (
         <>
-        <h1 className = 'page-title'>Tirotta's Movie App</h1>
+        <div className = 'auth-logo'>
+            <img src = {Logo}/>
+        </div>
         <div className = 'auth-page'>
             <Login login = {props.login} />
             <br></br>
