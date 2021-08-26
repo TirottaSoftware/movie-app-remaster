@@ -79,7 +79,7 @@ function App() {
         <Switch>
           <div className = 'App'>
           {
-            authState.loggedIn?
+            localStorage.getItem('accessToken')?
             <>
               <Navbar logout = {logout} toggleSidebar = {toggleSidebar}/>
               <Sidebar logout = {logout} toggleSidebar = {toggleSidebar} active = {sidebarState}/>
@@ -95,7 +95,7 @@ function App() {
               <Route path='/' component={() => <Auth login={login} register = {register} />} />
             </>
           }
-            </div>
+          </div>
         </Switch>
       </Router>
     </AuthContext.Provider>
