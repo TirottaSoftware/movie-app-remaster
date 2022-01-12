@@ -1,5 +1,5 @@
 
-# Tirotta's Moivie App (Remastered)
+# Tirotta's Movie App (Remastered)
 
 A remastered version of the previous Movie App: [Tirotta's Movie App](https://github.com/TirottaSoftware/tirottas-movie-app).
 Tirotta's Movie App is a movie library application which allows users to discover trending and upcoming movies, search for their favurite films and find details about them and their trailers.
